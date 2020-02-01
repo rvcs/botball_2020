@@ -1,0 +1,37 @@
+Botball_2020/v1_proto
+enable servos
+define back(speed,time) {
+	right_wheel (-speed)
+	left_wheel (-speed)
+	wait(time)
+	}
+deine forward(speed,time) {
+	right_wheel (speed)
+	left_wheel (speed)
+	wait(time)
+	}
+define right{
+	right_wheel(100%)
+	left_wheel(-100%)
+	wait(.1sec)
+	}
+define left{
+	right_wheel(-100%)
+	left_wheel(100%)
+	wait(.1sec)
+	}
+define closeClaw{
+	servo(1,0)
+	}
+
+define openClaw{
+	servo(1,2047)
+	}
+Start
+	back(10 sec)
+	right
+	back(5 sec)
+	forward(2 sec)
+	closeClaw
+	back(5 sec)
+End
