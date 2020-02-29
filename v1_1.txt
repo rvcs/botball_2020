@@ -1,0 +1,35 @@
+#include <kipr/wombat.h>
+void back(int time);
+void forward(int time);
+void right90();
+void left90();
+int main()
+{
+    back(6700);
+    back(500);
+    right90();
+    back(1000);
+    forward(1000);
+   
+    return 0;
+}
+void back(int time){
+    mav(0,1000);
+    mav(1,1000);
+    msleep(time);
+}
+void forward(int time){
+    mav (0,-1000);
+    mav (1,-1000); 
+    msleep(time);
+}
+void right90(){
+    mav(1,1000);
+    mav(0,-1000);
+    msleep(891);
+}
+void left90(){
+	mav(1,-1000);
+    mav(0,1000);
+    msleep(891);    
+}
