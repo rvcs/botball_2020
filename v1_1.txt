@@ -6,8 +6,8 @@ void left90();
 int main()
 {
     back(6700);
-    back(500);
-    right90();
+    forward(500);
+    left90();
     back(1000);
     forward(1000);
    
