@@ -1,4 +1,10 @@
 #include <kipr/wombat.h>
+/* This is extinct code. It is no longer needed.
+
+
+*/
+
+
 void back(int time);
 void forward(int time);
 void right90();
