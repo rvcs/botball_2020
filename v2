@@ -1,0 +1,70 @@
+#include <kipr/wombat.h>
+
+void back(int time);
+void forward(int time);
+void right90();
+void left90();
+void openClaw();
+void closeClaw();
+void shutClaw();
+void raiseClaw();
+void lowerClaw();
+
+
+int main()
+{
+    enable_servos();
+    lowerClaw();
+    back(1000);
+    forward(4500);
+    closeClaw();
+    right90();
+    back(1000);
+    raiseClaw();
+    right90();
+    forward(1000);
+    left90(90);
+    printf("Hello World\n");
+    return 0;
+}
+void back(int time){
+    mav(0,1000);
+    mav(1,1000);
+    msleep(time);
+}
+void forward(int time){
+    mav (0,-1000);
+    mav (1,-1000); 
+    msleep(time);
+}
+void right90(){
+    mav(0,1000);
+    mav(1,-1000);
+    msleep(891);
+}
+void left90(){
+	mav(0,-1000);
+    mav(1,1000);
+    msleep(891);    
+}
+
+void openClaw(){
+   	set_servo_position(1,1045);
+}
+
+void closeClaw(){
+    set_servo_position(1,1770);
+}
+
+void shutClaw(){
+    set_servo_position(1,2047);
+}
+
+void raiseClaw(){
+    set_servo_position(0,1100);
+}
+
+void lowerClaw(){
+	set_servo_position(0,1925);
+}
+
