@@ -1,0 +1,83 @@
+/*Things still to do: superglue wheel to prevent tire from falling off. */
+
+#include <kipr/wombat.h>
+int rightSpeed = 1000;
+int leftSpeed = 950;
+void back(int time);
+void forward(int time);
+void right90();
+void left90();
+void openClaw();
+void closeClaw();
+void shutClaw();
+void raiseClaw();
+void lowerClaw();
+void grabTransport();
+
+
+int main()
+{
+    enable_servos();
+    grabTransport();
+    back(2800);
+    raiseClaw();
+    
+    left90();
+    back(2000);
+    forward (100);
+    right90();
+    forward(4000);
+    left90(90);
+    printf("Hello World\n");
+    return 0;
+}
+void back(int time){
+    mav(0,rightSpeed);
+    mav(1,leftSpeed);
+    msleep(time);
+}
+void forward(int time){
+    mav (0,-rightSpeed);
+    mav (1,-leftSpeed); 
+    msleep(time);
+}
+void right90(){
+    mav(0,rightSpeed);
+    mav(1,-leftSpeed);
+    msleep(891);
+}
+void left90(){
+	mav(0,-rightSpeed);
+    mav(1,leftSpeed);
+    msleep(891);    
+}
+
+void openClaw(){
+   	set_servo_position(1,1045);
+}
+
+void closeClaw(){
+    set_servo_position(1,1770);
+}
+
+void shutClaw(){
+    set_servo_position(1,2047);
+}
+
+void raiseClaw(){
+    set_servo_position(0,1100);
+}
+
+void lowerClaw(){
+	set_servo_position(0,1925);
+}
+
+void grabTransport(){
+    lowerClaw();
+    openClaw();
+    back(1000);
+    forward(5100);
+    closeClaw();
+
+    
+}
